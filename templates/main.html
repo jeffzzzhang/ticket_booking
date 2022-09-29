@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ticket Booking</title>
+        <meta http-equi="Content-Type" content="text/html; charset=utf-8" />
+    </head>
+    <body>
+    <h2>
+        <div align="center">
+            Ticket Booking
+        </div>
+    </h2>
+
+    <form method='post'>
+        <div align="center"style="height:85px;font-size:15px;">
+            <input type='text' name='email_id' placeholder='email' 
+            style="width:200px; height:28px;" />
+            <br>Please provide your email
+
+        </div>
+
+    <form method='post'>
+        <div align="center" style="height:105px;font-size:18px;" >
+            Flight No.
+        <table border="0">
+
+        {% for name in flights_info %}
+        <tr>
+            <td style="width: 200px; text-align: center;"> 
+                <input type="radio" name="flight_no" id={{name}} value={{name}}>
+                {{name}}</td>
+        </tr>
+        {% endfor %}
+
+        </table>
+        </div>
+        <br />
+
+        <form method='post'>
+            <div align="center" style="height:105px;font-size:18px;" >
+                Stay
+            <table border="0">
+    
+            {% for s in avail_stay %}
+            <tr>
+                <td style="width: 200px; text-align: center;"> 
+                    <input type="radio" name="checkin_date" id={{s}} value={{s}}>
+                    {{s}}</td>
+            </tr>
+            {% endfor %}
+    
+            </table>
+            </div>
+            <br />
+    
+
+    <form method='post'>
+        <div align="center">
+            <input type='submit' name='submit_' value='GO' 
+            style="width:110px; height:35px;"/>
+        </div>
+        <br />
+    </form>
+
+    <br />
+    <br />
+    <div class='text' style="text-align:center;">
+        <!--<ul type="none">-->
+        <div align="center" style="font-size:15px;">
+        Available tickets: 
+        {% for t in avail_tickets %}
+        <p>
+            {{t}}
+        </p>
+        {% endfor %}
+        </div>
+
+    <!--</ul>-->
+    </div>
+
+
+    </body>
+</html>

@@ -1,0 +1,23 @@
+version: "3.7"
+services:
+  mongo:
+    image: mongo:5.0.9
+    restart: always
+    ports:
+     - 27017:27017 
+    volumes:
+     - /docker/mongodb/data/db:/data/db 
+     - /docker/mongodb/data/log:/var/log/mongodb  
+     - /docker/mongodb/data/config:/etc/mongo 
+
+  flask_api:
+    image: "flask_api"
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: always
+    container_name: "flask_api"
+    ports:
+      - 8888:8888
+    environment:
+      TZ: "Asia/Shanghai"
